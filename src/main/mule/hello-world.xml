@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core"
+	xmlns:http="http://www.mulesoft.org/schema/mule/http"
+	xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd">
+	<http:listener-config name="HTTP_Listener_config"
+		doc:name="HTTP Listener config"
+		doc:id="2b129a5f-a259-4ceb-89a6-a90f23031b15">
+		<http:listener-connection host="0.0.0.0"
+			port="8081" />
+	</http:listener-config>
+	<flow name="githubactionsci-cdpipelineFlow"
+		doc:id="7d4c50c7-14bd-4980-ae1f-45a51bd60fc1">
+		<http:listener doc:name="Listener"
+			doc:id="732b2f39-c662-478a-9698-bdbef1e91f42"
+			config-ref="HTTP_Listener_config" path="/hello" />
+		<logger level="INFO" doc:name="Log Start"
+			doc:id="96176b4e-15d0-42dc-b2e8-f53f0329ea0b"
+			message='#["Flow Start=" ++ flow.name]'/>
+			<logger level="INFO" doc:name="Log End"
+			doc:id="bdec12e5-d96f-43b8-a216-5fb95a032a65"
+			message='#["Flow End=" ++ flow.name]'/>
+	</flow>
+</mule>
