@@ -56,4 +56,4 @@ jobs:
         PASSWORD: ${{ secrets.ANYPOINT_PASSWORD }}
       run: |
         artifactName=$(ls *.jar | head -1)
-        mvn -X mule:deploy -Dmule.artifact=$artifactName -Danypoint.env=Sandbox  -Danypoint.appName=hw-ab -Danypoint.region=us-west-1 -Danypoint.workers=1 -Danypoint.username=abhay1593_25 -Danypoint.password=Maya@128125
+        mvn -X mule:deploy -Dmule.artifact=$artifactName -Danypoint.env=Sandbox  -Danypoint.appName=hw-ab -Danypoint.region=us-west-1 -Danypoint.workers=1 -Danypoint.username="$USERNAME" -Danypoint.password="$PASSWORD"
